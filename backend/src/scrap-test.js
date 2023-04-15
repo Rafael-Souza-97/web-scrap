@@ -1,5 +1,5 @@
 const { scrapingMercadoLivre }= require('./stores/mercado-livre');
 
-scrapingMercadoLivre("tv lg").then((result) => {
+scrapingMercadoLivre("ps5").then((result) => {
   console.log(result);
 });

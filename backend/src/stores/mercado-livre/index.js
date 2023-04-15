@@ -1,6 +1,5 @@
 const pup = require('puppeteer');
-
-const URL_MERCADO_LIVRE = "https://www.mercadolivre.com.br/";
+const { URL_MERCADO_LIVRE } = require('../../constants/url');
 
 const scrapingMercadoLivre = async (searchParam) => {
   let productCounter = 1;
@@ -78,7 +77,3 @@ const scrapingMercadoLivre = async (searchParam) => {
 }
 
 module.exports = { scrapingMercadoLivre };
-
-// scrapeMercadoLivre("geladeira frost").then((result) => {
-//   console.log(result);
-// });
