@@ -7,9 +7,7 @@ const scrapingMercadoLivre = async (searchParam) => {
 
   const browser = await pup.launch();
   const page = await browser.newPage();
-
   await page.goto(URL_MERCADO_LIVRE);
-
   await page.waitForSelector('.nav-search-input');
 
   await page.type('.nav-search-input', searchParam);
@@ -31,8 +29,9 @@ const scrapingMercadoLivre = async (searchParam) => {
     const title = await page
       .$eval('.ui-pdp-title', element => element.innerText);
   
-      const prices = await page.$$eval('.andes-money-amount__fraction', elements => elements.map(element => element.innerText));
-      const currentPrice = prices[1];
+    const prices = await page
+      .$$eval('.andes-money-amount__fraction', elements => elements.map(element => element.innerText));
+    const currentPrice = prices[1];
   
     const category = await page.evaluate(() => {
       const categoryLinks = document.querySelectorAll('.andes-breadcrumb__link');
