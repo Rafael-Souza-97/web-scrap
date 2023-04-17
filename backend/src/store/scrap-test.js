@@ -1,5 +1,11 @@
-const { scrapingMercadoLivre }= require('./stores/mercado-livre');
+// const { scrapingMercadoLivre }= require('./mercado-livre');
+const { scrapingBuscape }= require('./buscape');
 
-scrapingMercadoLivre("ps5").then((result) => {
+// scrapingMercadoLivre("ps5").then((result) => {
+//   console.log(result);
+// });
+
+scrapingBuscape("ps5").then((result) => {
   console.log(result);
 });
+

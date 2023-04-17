@@ -5,34 +5,46 @@ const Buscape = db.define('buscape', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
-    allownNull: false,
+    allowNull: false,
     primaryKey: true
+  },
+    store: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  search: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  category: {
+    type: Sequelize.STRING,
+    allowNull: true
   },
   title: {
     type: Sequelize.STRING,
     allowNull: false
   },
   price: {
-    type: Sequelize.FLOAT,
-    allowNull: false
-  },
-  category: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.DECIMAL(10,2),
+    allowNull: true
   },
   seller: {
     type: Sequelize.STRING,
+    allowNull: true
+  },
+  img: {
+    type: Sequelize.TEXT(),
+    allowNull: true
+  },
+  url: {
+    type: Sequelize.TEXT(),
     allowNull: false
   },
   description: {
-    type: Sequelize.TEXT,
-    allowNull: false
+    type: Sequelize.TEXT('long'),
+    allowNull: true
   },
-  link: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-  }, {
+}, {
     tableName: 'buscape'
 });
   

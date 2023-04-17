@@ -1,8 +1,8 @@
-const Meli = require('../models/Meli');
-const { scrapingMercadoLivre } = require('../store/mercado-livre/index');
+const Buscape = require('../models/Buscape');
+const { scrapingBuscape } = require('../store/buscape/index');
 
-const getMeliProductsBySearch = async (userSearch) => {
-  const existingProducts = await Meli.findAll({
+const getBuscapeProductsBySearch = async (userSearch) => {
+  const existingProducts = await Buscape.findAll({
     where: {
       search: userSearch,
     },
@@ -11,12 +11,13 @@ const getMeliProductsBySearch = async (userSearch) => {
   if (existingProducts.length > 0) {
     return existingProducts;
   } else {
-    const productList = await scrapingMercadoLivre(userSearch);
+    'chegou no else do service'
+    const productList = await scrapingBuscape(userSearch);
 
     if (!productList) return 'Nenhum produto encontrado';
 
     const newProducts = await Promise.all(productList.map(async (product) => {
-      const newProduct = await Meli.create({
+      const newProduct = await Buscape.create({
         store: product.store,
         search: userSearch,
         title: product.title,
@@ -25,7 +26,6 @@ const getMeliProductsBySearch = async (userSearch) => {
         seller: product.seller,
         img: product.img,
         url: product.url,
-        description: product.description,
       });
       return newProduct;
     }));
@@ -34,5 +34,5 @@ const getMeliProductsBySearch = async (userSearch) => {
   }
 }
 module.exports = {
-  getMeliProductsBySearch,
+  getBuscapeProductsBySearch,
 };

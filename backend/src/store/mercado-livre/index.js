@@ -19,7 +19,6 @@ const scrapingMercadoLivre = async (searchParam) => {
     page.click('.nav-search-btn'),
   ])
 
-  // executa o document.querySelectorAll
   const links = await page.$$eval('.ui-search-result__image > a', el => el
     .map(link => link.href));
 
@@ -67,6 +66,7 @@ const scrapingMercadoLivre = async (searchParam) => {
     });
 
     const obj = {};
+    obj.store = 'meli';
     obj.search = searchParam;
     (category ? obj.category = category : '');   
     obj.title = title;
@@ -81,7 +81,6 @@ const scrapingMercadoLivre = async (searchParam) => {
   }
 
   await browser.close();
-
   return productList;
 }
 

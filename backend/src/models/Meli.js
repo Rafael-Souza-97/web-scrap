@@ -8,6 +8,10 @@ const Meli = db.define('meli', {
     allowNull: false,
     primaryKey: true
   },
+  store: {
+    type: Sequelize.STRING,
+    allowNull: true
+  },
   search: {
     type: Sequelize.STRING,
     allowNull: true
