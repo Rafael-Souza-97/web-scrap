@@ -1,8 +1,8 @@
-const Buscape = require('../models/Buscape');
-const { scrapingBuscape } = require('../store/buscape/index');
+const AllProducts = require('../models/AllProducts');
+const { scrapingAll } = require('../store/all/index');
 
-const getBuscapeProductsBySearch = async (userSearch) => {
-  const existingProducts = await Buscape.findAll({
+const getAllProductsProductsBySearch = async (userSearch) => {
+  const existingProducts = await AllProducts.findAll({
     where: {
       search: userSearch,
     },
@@ -12,12 +12,12 @@ const getBuscapeProductsBySearch = async (userSearch) => {
     return existingProducts;
   } else {
     'chegou no else do service'
-    const productList = await scrapingBuscape(userSearch);
+    const productList = await scrapingAll(userSearch);
 
     if (!productList) return 'Nenhum produto encontrado';
 
     const newProducts = await Promise.all(productList.map(async (product) => {
-      const newProduct = await Buscape.create({
+      const newProduct = await AllProducts.create({
         store: product.store,
         search: userSearch,
         title: product.title,
@@ -34,7 +34,6 @@ const getBuscapeProductsBySearch = async (userSearch) => {
     return newProducts;
   }
 }
-
 module.exports = {
-  getBuscapeProductsBySearch,
+  getAllProductsProductsBySearch,
 };

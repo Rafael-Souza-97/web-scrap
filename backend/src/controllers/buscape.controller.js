@@ -14,7 +14,7 @@ const getBuscapeProductsBySearch = async (req, res) => {
   } catch (error) {
     console.log(error);
 
-    return res.status(404).json({ message: 'These products does not exist' });
+    return res.status(404).json({ message: 'Não foi possível encontrar este produto no momento.' });
   }
 };
 

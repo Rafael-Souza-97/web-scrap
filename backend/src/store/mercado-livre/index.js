@@ -70,7 +70,7 @@ const scrapingMercadoLivre = async (searchParam) => {
     obj.search = searchParam;
     (category ? obj.category = category : '');   
     obj.title = title;
-    obj.price = prices;
+    obj.price = parseFloat(prices);
     (seller ? obj.seller = seller : '');
     obj.img = imgUrl;
     obj.url = link;

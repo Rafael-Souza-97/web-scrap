@@ -1,10 +1,10 @@
-const productsService = require('../services/meli.service');
+const productsService = require('../services/allProducts.service');
 
-const getMeliProductsBySearch = async (req, res) => {
+const getAllProductsBySearch = async (req, res) => {
   try {
     const { q } = req.query;
 
-    const productsResult = await productsService.getMeliProductsBySearch(q);
+    const productsResult = await productsService.getAllProductsProductsBySearch(q);
     
     if (!productsResult) {
       return res.status(500).json({ message: 'Something went wrong' });
@@ -19,6 +19,6 @@ const getMeliProductsBySearch = async (req, res) => {
 };
 
 module.exports = {
-  getMeliProductsBySearch,
+  getAllProductsBySearch,
 };
 

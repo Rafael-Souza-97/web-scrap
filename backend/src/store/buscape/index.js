@@ -32,10 +32,11 @@ const scrapingBuscape = async (searchParam) => {
     return elements.map(element => {
       const priceText = element.innerText;
       const numericPrice = parseFloat(priceText.match(/\d+\.\d+/)[0]);
-      return numericPrice;
+      const floatPrice = parseFloat(numericPrice.toString().replace('.', ''));
+      return floatPrice;
     });
   });
-
+  
   const seller = await page.$$eval('.OfferMerchant_Name__f_ADg', elements => {
     return elements.map(element => element.innerText);
   });
