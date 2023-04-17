@@ -9,7 +9,7 @@ const connection = new Sequelize(
   {
     host: process.env.MYSQL_HOST || 'localhost',
     dialect: 'mysql',
-    logging: true,
+    logging: false,
   }
 );
 

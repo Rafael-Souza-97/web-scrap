@@ -1,6 +1,8 @@
 const pup = require('puppeteer');
 const { URL_MERCADO_LIVRE } = require('../../constants/url');
 
+const NUMBER_OF_PRODUCTS = 5;
+
 const scrapingMercadoLivre = async (searchParam) => {
   let productCounter = 1;
   const productList = [];
@@ -22,17 +24,23 @@ const scrapingMercadoLivre = async (searchParam) => {
     .map(link => link.href));
 
   for(const link of links) {
-    if (productCounter === 6) continue;
+    if (productCounter > NUMBER_OF_PRODUCTS) continue;
     await page.goto(link);
     await page.waitForSelector('.ui-pdp-title');
 
     const title = await page
       .$eval('.ui-pdp-title', element => element.innerText);
-  
-    const prices = await page
-      .$$eval('.andes-money-amount__fraction', elements => elements.map(element => element.innerText));
-    const currentPrice = prices[1];
-  
+
+    const prices = await page.evaluate(() => {
+      const metaTag = document.querySelector('meta[itemprop="price"]');
+      return metaTag.getAttribute('content');
+    });
+    
+    const imgUrl = await page.evaluate(() => {
+      const img = document.querySelector('.ui-pdp-gallery__figure .ui-pdp-image');
+      return img.getAttribute('src');
+    });
+
     const category = await page.evaluate(() => {
       const categoryLinks = document.querySelectorAll('.andes-breadcrumb__link');
       switch (categoryLinks.length) {
@@ -59,12 +67,14 @@ const scrapingMercadoLivre = async (searchParam) => {
     });
 
     const obj = {};
+    obj.search = searchParam;
+    (category ? obj.category = category : '');   
     obj.title = title;
-    obj.price = currentPrice;
-    (category ? obj.category = category : '');
+    obj.price = prices;
     (seller ? obj.seller = seller : '');
+    obj.img = imgUrl;
+    obj.url = link;
     obj.description = description;
-    obj.link = link;
 
     productList.push(obj);
     productCounter += 1;
