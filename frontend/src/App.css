@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Raleway', sans-serif;
+  }
+}
+
+body{
+  min-width: 320px;
+}
+
+.selector::after {
+  content: "";
+  display: block;
+  border-bottom: 2px solid black;
+  margin-top: 3px;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.selector:hover::after,
+.selector:focus::after {
+  transform: scaleX(1);
+  font-weight: bold;
+}
+
+.right-rounded {
+  border-radius: 0 15px 15px 0;
+  margin-left: -1px;
+  z-index: 10;
+}
+
+.product-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  margin: 50px;
+  margin-top: 32px;
+  padding: 10px;
+}
+
+.product-card {
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-card-img {
+  border-radius: 8px;
+  height: 250px;
+  margin-bottom: 16px;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.product-card h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-card p {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.absolute {
+  display: none;
+}
+
+.group:hover .absolute {
+  display: block;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  max-height: 90%;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
