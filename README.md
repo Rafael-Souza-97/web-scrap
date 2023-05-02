@@ -24,13 +24,13 @@ Em resumo, o web scraping é uma técnica poderosa para coletar dados da web, e 
 
 ## Estilização
 
-Para a estilização, utilizei o framework Tailwind de forma estratégica para deixar o site estilizado e responsivo em pouco tempo. O Tailwind é um framework CSS utilitário que permite criar estilos customizados rapidamente, sendo essencial para atender às demandas de prazo do projeto.
+Para a estilização do projeto, utilizei uma combinação de ferramentas que me permitiu criar uma interface web responsiva, funcional e atraente.
 
-Os campos de input, por sua vez, foram estilizados utilizando o Material UI, conjunto de componentes React pré-construídos que foram personalizados para atender às necessidades específicas do projeto. Neles, implementei máscaras para CPF, telefones e datas, permitindo que o preenchimento desses campos seja feito automaticamente, evitando erros comuns de digitação e tornando a experiência do usuário mais ágil e intuitiva.
+Em primeiro lugar, utilizei o framework Tailwind de forma estratégica para deixar o site estilizado e responsivo em pouco tempo. O Tailwind é um framework CSS utilitário que permite criar estilos customizados rapidamente, sendo essencial para atender às demandas de prazo do projeto. Utilizei-o para a estruturação geral da página e para aplicar estilos em elementos como botões, textos e espaçamentos.
 
-Além disso, utilizei o CSS nativo em alguns casos para complementar o estilo dos componentes.
+Os campos de input e Select, por sua vez, foram estilizados utilizando o Material UI, conjunto de componentes React pré-construídos que foram personalizados para atender às necessidades específicas do projeto. Esses componentes permitem que o usuário interaja com o sistema de maneira fácil e intuitiva, além de adicionar uma camada de sofisticação visual à interface. Além disso, utilizei o Skeleton do Material UI para criar um efeito visual de loading na página, o que ajuda a reduzir a ansiedade do usuário enquanto aguarda a resposta do sistema.
 
-Com a combinação dessas ferramentas, foi possível criar uma interface web responsiva, atraente e funcional em um curto período de tempo.
+Por fim, utilizei o CSS nativo em alguns casos para complementar o estilo dos componentes, como a estilização das fontes e cores. Com a combinação dessas ferramentas, consegui criar uma interface web agradável e eficiente em um curto período de tempo.
 
 <br>
 <br>
